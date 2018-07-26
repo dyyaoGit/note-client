@@ -1,14 +1,14 @@
 <template>
   <div class="layout">
     <Header></Header>
-    <div class="w980 content">
+    <div class="w1170 content">
       <router-view/>
     </div>
   </div>
 </template>
 
 <script>
-  import Header from '@/components/Header'
+  import Header from '@/components/Header.vue'
 
   export default {
     components: {

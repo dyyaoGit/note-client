@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import index from '@/views/index'
+import index from '../views/index.vue'
 
 Vue.use(Router)
 
@@ -13,7 +13,11 @@ export default new Router({
     },
     {
       path: '/content',
-      component: () => import('@/views/content')
+      component: () => import('../views/content.vue')
+    },
+    {
+      path: '/region',
+      component: () => import('../views/region.vue')
     }
   ]
 })

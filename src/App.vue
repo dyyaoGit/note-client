@@ -5,7 +5,7 @@
 </template>
 
 <script>
-  import Layout from '@/components/Layout'
+  import Layout from '@/components/Layout.vue'
 
   export default {
     name: 'App',
@@ -25,8 +25,8 @@
     list-style: none;
   }
 
-  .w980 {
-    width: 980px;
+  .w1170 {
+    width: 1170px;
     margin: 0 auto;
   }
 

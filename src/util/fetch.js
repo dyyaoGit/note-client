@@ -1,11 +1,11 @@
 import axios from 'axios'
 import Vue from 'vue'
 
-console.log(process.env)
+let env = process.env.NODE_ENV == 'development' ? '开发环境': '生产环境'
+
 let instance = axios.create({
-  baseUrl: "/api"
+  baseURL: process.env.NODE_ENV == 'development' ? '/api' : '/'
 })
 
 Vue.prototype.$axios = instance;
 
-export default instance;

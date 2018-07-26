@@ -1,7 +1,7 @@
 <template>
     <header class="layout-header">
-      <div class="w980 wrap">
-        <h1>云笔记</h1>
+      <div class="w1170 wrap">
+        <h1 @click="$router.push('/')">云笔记</h1>
         <el-button class="write-btn">
           写笔记
         </el-button>
@@ -23,8 +23,6 @@
   .layout-header {
     height: 50px;
     background: #409eff;
-
-
   }
 
   .wrap {
