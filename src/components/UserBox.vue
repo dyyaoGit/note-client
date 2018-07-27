@@ -29,6 +29,7 @@
   </div>
 </template>
 
+
 <script>
   import cookies from 'js-cookie'
 
