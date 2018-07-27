@@ -19,11 +19,19 @@
       </div>
     </div>
     <div class="user-box" v-else>
-      <div>
-        {{usermsg.username}}
+      <div class="user-box-item user-icon">
+        <img src="/static/img/icon.jpg">
+      </div>
+      <div class="name-item">
+        萌新:  {{usermsg.username}}
+      </div>
+      <div class="email-item">
+        email:  {{usermsg.email}}
       </div>
       <div>
-        {{usermsg.email}}
+        <el-button type="warning" style="width: 100%;margin-top: 10px;" @click="handleLoout">
+          退出登陆
+        </el-button>
       </div>
     </div>
   </div>
@@ -72,6 +80,21 @@
           this.usermsg.username = username;
           this.usermsg.email = email;
         }
+      },
+      handleLoout () {
+        this.usermsg.email = '';
+        this.usermsg.username = '';
+        cookies.remove('username');
+        cookies.remove('email');
+
+        this.$axios.put('/logOut').then(res => {
+          if(res.data.code == 200){
+            alert('退出登陆成功')
+          }
+          else {
+            alert(res.data.msg);
+          }
+        })
       }
     },
     mounted () {
@@ -89,6 +112,7 @@
     padding: 21px 30px;
   }
 
+  /*用户登陆框*/
   .item {
     margin-top: 30px;
 
@@ -105,4 +129,30 @@
       outline: none;
     }
   }
+  /*用户登陆框结束*/
+
+  /*用户信息框*/
+  .user-box {
+    padding-top: 30px;
+    .user-icon {
+      text-align: center;
+      img {
+        width: 100px;
+        height: 100px;
+      }
+    }
+
+    .name-item,.email-item {
+      text-align: center;
+      margin-top: 20px;
+      font-size: 16px;
+      color: #333;
+      font-weight: 400;
+      line-height: 36px;
+    }
+  }
+
+  /*用户登陆框结束*/
+
+
 </style>
