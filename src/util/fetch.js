@@ -9,3 +9,4 @@ let instance = axios.create({
 
 Vue.prototype.$axios = instance;
 
+

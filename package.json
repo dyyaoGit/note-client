@@ -12,6 +12,7 @@
   "dependencies": {
     "axios": "^0.18.0",
     "element-ui": "^2.4.4",
+    "js-cookie": "^2.2.0",
     "node-sass": "^4.9.2",
     "sass-loader": "^7.0.3",
     "vue": "^2.5.2",

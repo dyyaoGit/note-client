@@ -13,11 +13,11 @@
       </div>
 
       <div class="item">
-        <input type="password" placeholder="密码" v-model="password" @keyup.enter="handleRegion">
+        <input type="password" placeholder="密码" v-model="password" @keyup.enter="handelRegion">
       </div>
 
       <div class="item">
-        <el-button type="primary" class="_el-btn" @click="handleRegion">
+        <el-button type="primary" class="_el-btn" @click="handelRegion">
           注册
         </el-button>
       </div>
@@ -35,23 +35,20 @@
         }
       },
       methods: {
-        handleRegion () {
+        handelRegion () {
           let params = {
-            username: this.username,
+            username : this.username,
             password: this.password,
-            email: this.email
+            email : this.email
           }
 
           this.$axios.post('/user', params).then(res => {
-            if(res.data.code == 200) {
-              alert("注册成功")
-              this.username = '';
-              this.password = '';
-              this.email = '';
+            if(res.data.code == 200){
+              alert('注册成功!')
               this.$router.push('/');
             }
             else {
-              alert(res.data.msg);
+              alert(res.data.msg)
             }
           })
 
