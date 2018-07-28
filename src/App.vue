@@ -33,4 +33,18 @@
   body {
     background: #f1f1f1;
   }
+
+  .flr {
+    float: right;
+  }
+
+  .fll {
+    float: left;
+  }
+
+  .clearfix::after {
+    content: '';
+    display: block;
+    clear: both;
+  }
 </style>

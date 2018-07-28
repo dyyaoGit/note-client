@@ -12,12 +12,21 @@ export default new Router({
       component: index
     },
     {
-      path: '/content',
+      path: '/content/:id',
+      name: 'content',
       component: () => import('../views/content.vue')
     },
     {
       path: '/region',
       component: () => import('../views/region.vue')
+    },
+    {
+      path: '/writenote',
+      component: () => import('../views/writeNote.vue')
+    },
+    {
+      path: '/search',
+      component: () => import ('../views/search.vue')
     }
   ]
 })

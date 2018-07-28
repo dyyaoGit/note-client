@@ -2,7 +2,7 @@
     <header class="layout-header">
       <div class="w1170 wrap">
         <h1 @click="$router.push('/')">云笔记</h1>
-        <el-button class="write-btn">
+        <el-button class="write-btn" @click="$router.push('/writenote')">
           写笔记
         </el-button>
       </div>
@@ -11,7 +11,6 @@
 
 <script>
     export default {
-        name: '',
         data() {
             return {}
         }

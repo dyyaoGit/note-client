@@ -1,17 +1,17 @@
 <template>
     <div class="content">
       <h2>
-        我是文章标题
+        {{res.title}}
       </h2>
       <div class="content-msg">
         <div class="author">
-          作者: <span class="author-name">我有我风格</span>
+          作者: <span class="author-name">{{res.author}}</span>
         </div>
         <div class="create-time">
           2018年7月21日
         </div>
       </div>
-      <div class="content-details">
+      <div class="content-details" v-html="res.content">
         上周是 Ghost 从 Kickstarter 上推广算起的五周年纪念日。
 
         利用这些里程碑来标记重要时刻并反思迄今为止的旅程总是显得很有趣。在上一个四周年纪念日里，我谈到了营收里程碑和产品更新的话题，但是今年我将更多地将重心放在迄今为止整个过程中我们所学到的东西上。
@@ -69,18 +69,33 @@
 
 <script>
     export default {
-        name: '',
         data() {
-            return {}
+            return {
+              res: {}
+            }
+        },
+        methods: {
+          getData () {
+            let id = this.$route.params.id
+
+            this.$axios.get(`/article/${id}`).then(res => {
+              this.res = res.data.data;
+            })
+          }
+        },
+        created () {
+          this.getData();
         }
     }
 </script>
 
-
+<style>
+  .content img{ display: block;
+    width: 100%;}
+</style>
 <style scoped lang="scss">
   .content {
     margin-top: 50px;
-    width: 750px;
     padding-top: 35px;
     background: #fff;
     margin-bottom: 35px;

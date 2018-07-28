@@ -20,7 +20,7 @@
     </div>
     <div class="user-box" v-else>
       <div class="user-box-item user-icon">
-        <img src="/static/img/icon.jpg">
+        <img :src="usermsg.avatar">
       </div>
       <div class="name-item">
         萌新:  {{usermsg.username}}
@@ -45,11 +45,12 @@
     name: "UserBox",
     data () {
       return {
-        email: "",
-        password: "",
+        email: "yao@outlook.com",
+        password: "yjr1923521",
         usermsg: {
           username: '',
-          email: ""
+          email: '',
+          avatar: ''
         }
       }
     },
@@ -60,11 +61,15 @@
           password: this.password
         }
 
+        console.log(process.env.NODE_ENV);
+        let basePath = process.env.NODE_ENV == 'development' ? '/api' : ''
+
         this.$axios.post('/login', params).then(res => {
           if(res.data.code == 200){
             this.usermsg = res.data.data
             cookies.set('username', this.usermsg.username, { expires: 14 })
             cookies.set('email', this.usermsg.email, { expires: 14 })
+            cookies.set('avatar', basePath + this.usermsg.avatar, { expires: 14 })
             alert('登陆成功，欢迎回来' + res.data.data.username)
           }
           else {
@@ -75,10 +80,12 @@
       getUserMsg () {
         let username = cookies.get('username')
         let email = cookies.get('email')
+        let avatar = cookies.get('avatar')
 
         if(username && email){
           this.usermsg.username = username;
           this.usermsg.email = email;
+          this.usermsg.avatar = avatar;
         }
       },
       handleLoout () {
@@ -87,7 +94,7 @@
         cookies.remove('username');
         cookies.remove('email');
 
-        this.$axios.put('/logOut').then(res => {
+        this.$axios.delete('/logOut').then(res => {
           if(res.data.code == 200){
             alert('退出登陆成功')
           }
