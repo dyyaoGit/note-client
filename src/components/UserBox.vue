@@ -70,7 +70,7 @@
             this.usermsg.avatar = process.env.NODE_ENV == 'development' ? '/api' + res.data.data.avatar : res.data.data.avatar
             cookies.set('username', this.usermsg.username, { expires: 14 })
             cookies.set('email', this.usermsg.email, { expires: 14 })
-            cookies.set('avatar', basePath + this.usermsg.avatar, { expires: 14 })
+            cookies.set('avatar', this.usermsg.avatar, { expires: 14 })
             alert('登陆成功，欢迎回来' + res.data.data.username)
           }
           else {
