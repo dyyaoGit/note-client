@@ -45,7 +45,7 @@
     name: "UserBox",
     data () {
       return {
-        email: "yao@outlook.com",
+        email: "646617513@qq.com",
         password: "yjr1923521",
         usermsg: {
           username: '',
@@ -67,6 +67,7 @@
         this.$axios.post('/login', params).then(res => {
           if(res.data.code == 200){
             this.usermsg = res.data.data
+            this.usermsg.avatar = process.env.NODE_ENV == 'development' ? '/api' + res.data.data.avatar : res.data.data.avatar
             cookies.set('username', this.usermsg.username, { expires: 14 })
             cookies.set('email', this.usermsg.email, { expires: 14 })
             cookies.set('avatar', basePath + this.usermsg.avatar, { expires: 14 })
